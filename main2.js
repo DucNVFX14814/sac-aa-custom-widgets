@@ -116,7 +116,7 @@ var getScriptPromisify = (src) => {
                             }
                         });
                     }
-                });
+                }, 200);
                 myChart.setOption(option);
             });
 
