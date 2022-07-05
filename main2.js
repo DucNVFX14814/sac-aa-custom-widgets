@@ -116,9 +116,9 @@ var getScriptPromisify = (src) => {
                             }
                         });
                     }
-                }, 200);
+                });
                 myChart.setOption(option);
-            });
+            }, 200);
 
             // end paste
             // myChart.setOption(option)
