@@ -9,7 +9,7 @@ var getScriptPromisify = (src) => {
     prepared.innerHTML = `
         <style>
         </style>
-        <div id="root" style="width: 100%; height: 100%;">
+        <div id="root2" style="width: 100%; height: 100%;">
         </div>
       `
     class SamplePrepared extends HTMLElement {
@@ -19,7 +19,7 @@ var getScriptPromisify = (src) => {
             this._shadowRoot = this.attachShadow({ mode: 'open' })
             this._shadowRoot.appendChild(prepared.content.cloneNode(true))
 
-            this._root = this._shadowRoot.getElementById('root')
+            this._root = this._shadowRoot.getElementById('root2')
 
             this._props = {}
 

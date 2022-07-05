@@ -9,7 +9,7 @@
     "description": "A sample custom widget wrapped EChart Prepared",
     "webcomponents": [{
         "kind": "main",
-        "tag": "com-sap-sample-echarts-prepared",
+        "tag": "com-sap-sample-echarts-prepared2",
         "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets-lock/main2.js",
         "integrity": "",
         "ignoreIntegrity": true
