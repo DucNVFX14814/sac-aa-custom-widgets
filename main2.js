@@ -121,7 +121,7 @@ var getScriptPromisify = (src) => {
             });
 
             // end paste
-            myChart.setOption(option)
+            // myChart.setOption(option)
         }
     }
 
