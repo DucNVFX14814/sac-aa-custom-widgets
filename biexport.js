@@ -133,7 +133,7 @@
             this._export_settings.parse_all_styles = "";
             this._export_settings.parse_3rdparty = "";
             this._export_settings.messages = "";
-            this._export_settings.oauth = null;
+            this._export_settings.oauth = "";
             this._export_settings.server_urls = "";
             this._export_settings.license = "";
             this._export_settings.server_waittime = 0;
