@@ -1869,18 +1869,18 @@
         return baseUrl + url;
     }
 
-    function getUrlAsDataUrl(url) {
-        return fetch(url).then(r => r.blob()).then(b => {
-            return new Promise((resolve, reject) => {
-                let fileReader = new FileReader();
-                fileReader.onload = () => {
-                    resolve(fileReader.result);
-                };
-                fileReader.onerror = () => {
-                    reject(new Error("Failed to convert URL to data URL: " + url));
-                };
-                fileReader.readAsDataURL(b);
-            });
+    async function getUrlAsDataUrl(url) {
+        const r = await fetch(url);
+        const b = await r.blob();
+        return await new Promise((resolve, reject) => {
+            let fileReader = new FileReader();
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = () => {
+                reject(new Error("Failed to convert URL to data URL: " + url));
+            };
+            fileReader.readAsDataURL(b);
         });
     }
 
