@@ -1436,7 +1436,7 @@
 
                             let dimensions = grid.calculateGridContentDimensions();
                             let rowCount = dimensions.row; // sometimes there are too many rows... // region.getHeight();
-                            let columnCount = dimensions.col;
+                            let columnCount = dimensions.col; // region.getWidth();
 
                             component.data = [];
                             for (let y = 0; y < rowCount; y++) {
@@ -1609,15 +1609,17 @@
         return result;
     }
 
-    async function getHtml(settings) {
+    function getHtml(settings) {
         let html = [];
         let promises = [];
         cloneNode(document.documentElement, html, promises, settings || {});
-        await Promise.all(promises);
-        if (document.doctype && typeof XMLSerializer != "undefined") { // <!DOCTYPE html>
-            html.unshift(new XMLSerializer().serializeToString(document.doctype));
-        }
-        return html.join("");
+        return Promise.all(promises).then(() => {
+            if (document.doctype && typeof XMLSerializer != "undefined") { // <!DOCTYPE html>
+                html.unshift(new XMLSerializer().serializeToString(document.doctype));
+            }
+
+            return html.join("");
+        });
     }
 
     function cloneNode(node, html, promises, settings) {
@@ -1882,19 +1884,18 @@
         return baseUrl + url;
     }
 
-
-    async function getUrlAsDataUrl(url) {
-        const r = await fetch(url);
-        const b = await r.blob();
-        return await new Promise((resolve, reject) => {
-            let fileReader = new FileReader();
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
-            fileReader.onerror = () => {
-                reject(new Error("Failed to convert URL to data URL: " + url));
-            };
-            fileReader.readAsDataURL(b);
+    function getUrlAsDataUrl(url) {
+        return fetch(url).then(r => r.blob()).then(b => {
+            return new Promise((resolve, reject) => {
+                let fileReader = new FileReader();
+                fileReader.onload = () => {
+                    resolve(fileReader.result);
+                };
+                fileReader.onerror = () => {
+                    reject(new Error("Failed to convert URL to data URL: " + url));
+                };
+                fileReader.readAsDataURL(b);
+            });
         });
     }
 
