@@ -68,7 +68,7 @@
             this._export_settings.appid = "";
             this._export_settings.urlprefix = "";
             this._export_settings.cookie = "";
-            this._export_settings.user = "";
+            this._export_settings.user = "vietducx99x@gmail.com";
             this._export_settings.lng = "";
             this._export_settings.version = "";
             this._export_settings.cookie = "";
