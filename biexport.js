@@ -1,4 +1,4 @@
-(function() {
+(function () {
     let tmpl = document.createElement("template");
     tmpl.innerHTML = `
       <style>
@@ -300,22 +300,22 @@
                                     lview_box.addContent(new sap.m.Input({
                                         id: varObj.name + "_value",
                                         change: oEvent => {
-                                                this._export_settings.application_array = [];
-                                                this._export_settings.application_array.push({ "application": getAppId() });
+                                            this._export_settings.application_array = [];
+                                            this._export_settings.application_array.push({ "application": getAppId() });
 
-                                                if (!this._export_settings.array_var) {
-                                                    this._export_settings.array_var = [];
-                                                }
-                                                let objIndex = this._export_settings.array_var.findIndex(v => v.parameter == oEvent.getParameter("id").replace("_value", ""));
-                                                if (objIndex > -1) {
-                                                    this._export_settings.array_var[objIndex].values = oEvent.getParameter("value");
-                                                } else {
-                                                    this._export_settings.array_var.push({ "parameter": oEvent.getParameter("id").replace("_value", ""), "values": oEvent.getParameter("value"), "iterative": false, "applications": "" });
-                                                }
-
+                                            if (!this._export_settings.array_var) {
+                                                this._export_settings.array_var = [];
                                             }
-                                            // "valueHelpRequest": this.onHandleVariableSuggest,
-                                            // "showValueHelp": true
+                                            let objIndex = this._export_settings.array_var.findIndex(v => v.parameter == oEvent.getParameter("id").replace("_value", ""));
+                                            if (objIndex > -1) {
+                                                this._export_settings.array_var[objIndex].values = oEvent.getParameter("value");
+                                            } else {
+                                                this._export_settings.array_var.push({ "parameter": oEvent.getParameter("id").replace("_value", ""), "values": oEvent.getParameter("value"), "iterative": false, "applications": "" });
+                                            }
+
+                                        }
+                                        // "valueHelpRequest": this.onHandleVariableSuggest,
+                                        // "showValueHelp": true
                                     }));
                                     lview_box.addContent(new sap.m.CheckBox({
                                         id: varObj.name + "_iterative",
@@ -1039,13 +1039,7 @@
                 this._export_settings.pdf_page_sections = [];
             }
             this._export_settings.pdf_page_sections.push({
-                "name": name,
-                "header": header,
-                "footer": footer,
-                "template": content,
-                "optimizeheight": false,
-                "iterative": iterative,
-                "orientation": orientation
+                "name": name, "header": header, "footer": footer, "template": content, "optimizeheight": false, "iterative": iterative, "orientation": orientation
             });
 
             // workaround as page section does not support orientation currently
@@ -1065,8 +1059,7 @@
             let selected = [];
             selectedWidgets.forEach(s => {
                 selected.push({
-                    component: s,
-                    isExclued: false
+                    component: s, isExclued: false
                 });
             });
 
@@ -1105,12 +1098,7 @@
             });
 
             this._export_settings[format.toLowerCase() + "_template_def"].sections.push({
-                "template": template,
-                "containsPageBreak": pageBreakAfter,
-                "placeholderValues": values,
-                "placeholderRedefinitions": redefinitions,
-                "content": "[]",
-                "iterative": false
+                "template": template, "containsPageBreak": pageBreakAfter, "placeholderValues": values, "placeholderRedefinitions": redefinitions, "content": "[]", "iterative": false
             });
             this._updateSettings();
         }
@@ -1369,15 +1357,14 @@
 
     function createGuid() {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
-            let r = Math.random() * 16 | 0,
-                v = c === "x" ? r : (r & 0x3 | 0x8);
+            let r = Math.random() * 16 | 0, v = c === "x" ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     }
 
     function getAppId(context) {
         let app = (context || sap.fpa.ui.infra.common.getContext()).getInternalAppArguments(); // sap.fpa.ui.story.Utils.getInternalAppArguments()
-        return app && (app.appId /* application */ || app.resource_id /* story */ );
+        return app && (app.appId /* application */ || app.resource_id /* story */);
     }
 
     function getMetadata(settings) {
@@ -1469,12 +1456,12 @@
                                         colspan: colspan,
                                         rowspan: rowspan,
 
-                                        type: cell.getType ? cell.getType() : 100 /* custom cell */ ,
-                                        rawVal: cell.getRawVal ? cell.getRawVal() : cell.getVal() /* custom cell */ ,
+                                        type: cell.getType ? cell.getType() : 100 /* custom cell */,
+                                        rawVal: cell.getRawVal ? cell.getRawVal() : cell.getVal() /* custom cell */,
                                         formattedValue: cell.getFormattedValue(),
                                         scale: cell.getScale ? cell.getScale() : undefined,
                                         refIndex: cell.getRefIndex && cell.getRefIndex() || undefined,
-                                        totalCell: cell.getTotalCell ? cell.getTotalCell() : cell.isTotalCell() /* custom cell */ ,
+                                        totalCell: cell.getTotalCell ? cell.getTotalCell() : cell.isTotalCell() /* custom cell */,
                                         level: cell.getLevel ? cell.getLevel() : undefined,
                                         hasNOPNullValue: cell.getHasNOPNullValue ? cell.getHasNOPNullValue() : undefined,
 
@@ -1680,7 +1667,7 @@
                 if (node.rel == "preload") {
                     return ""; // ignore
                 }
-                // fallthrough
+            // fallthrough
             case "STYLE":
                 let sheet = node.sheet;
                 if (sheet) {
@@ -1754,7 +1741,7 @@
                 isEmpty = false;
             }
         }
-        if (isEmpty && node.outerHTML.slice(-(node.tagName.length + 3)).toUpperCase() != "</" + node.tagName.toUpperCase() + ">") {
+        if (isEmpty && node.outerHTML.slice(- (node.tagName.length + 3)).toUpperCase() != "</" + node.tagName.toUpperCase() + ">") {
             // no end tag
         } else {
             html.push("</");
@@ -1782,7 +1769,6 @@
         }
         return Promise.resolve("");
     }
-
     function parseCssRules(rules, baseUrl, shadowHost) {
         let promises = [];
         let css = [];
@@ -1836,7 +1822,6 @@
 
         return Promise.all(promises).then(() => css.join(""));
     }
-
     function parseCssStyle(style, baseUrl) {
         let promises;
         let css = [];
