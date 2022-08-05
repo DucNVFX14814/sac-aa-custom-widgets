@@ -10,7 +10,7 @@
     "webcomponents": [{
         "kind": "main",
         "tag": "com-sap-sample-echarts-prepared",
-        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets-lock/main.js",
+        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets/main.js",
         "integrity": "",
         "ignoreIntegrity": true
     }],
