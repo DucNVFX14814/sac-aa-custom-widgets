@@ -151,5 +151,5 @@ let getScriptPromisify = (src) => {
         }
     }
 
-    customElements.define('com-sap-sample-echarts-life_expectancy2', SampleLifeExpectancy2)
+    customElements.define('com-sap-sac-sample-demo_data_binding_custom_widget', SampleLifeExpectancy2)
 })()
