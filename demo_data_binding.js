@@ -111,7 +111,7 @@ let getScriptPromisify = (src) => {
                     {
                         name: 'Area Mode',
                         type: 'pie',
-                        radius: ['40%', '70%'],
+                        radius: [20, 140],
                         center: ['50%', '60%'],
                         roseType: 'area',
                         itemStyle: {
@@ -122,7 +122,7 @@ let getScriptPromisify = (src) => {
                     {
                         name: 'Access From',
                         type: 'pie',
-                        radius: [20, 140],
+                        radius: ['40%', '70%'],
                         center: ['83.33%', '60%'],
                         avoidLabelOverlap: false,
                         itemStyle: {
