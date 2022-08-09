@@ -68,7 +68,7 @@ let getScriptPromisify = (src) => {
 
             const option = {
                 title: {
-                    top: '5%',
+                    top: '3%',
                     text: 'Demo Custom Widget',
                     left: 'center'
                 },
