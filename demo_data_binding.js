@@ -22,7 +22,7 @@ let getScriptPromisify = (src) => {
           <div id="placeholder">Hello World</div>
         </div>
       `
-    class SampleLifeExpectancy2 extends HTMLElement {
+    class DemoCustomWidget extends HTMLElement {
         constructor() {
             super()
 
@@ -50,20 +50,20 @@ let getScriptPromisify = (src) => {
 
             const resultSet = this.myDataBinding
             console.log(resultSet)
-            const datas = resultSet.data
-            console.log(datas)
+            const data = resultSet.data
+            console.log(data)
             const dataBinding = this.dataBindings.getDataBinding('myDataBinding')
             console.log(dataBinding)
-            const dimentions = []
-            const measures = []
+                // const dimentions = []
+                // const measures = []
             const myData = []
-            for (let data of datas) {
-                // dimentions.push(data.dimensions_0.id)
-                // measures.push(data.measures_0.raw)
-                myData.push({ value: data.measures_0.raw, name: data.dimensions_0.id })
+            for (let xdata of data) {
+                // dimentions.push(xdata.dimensions_0.id)
+                // measures.push(xdata.measures_0.raw)
+                myData.push({ value: xdata.measures_0.raw, name: xdata.dimensions_0.id })
             }
-            console.log(dimentions)
-            console.log(measures)
+            // console.log(dimentions)
+            // console.log(measures)
             const myChart = echarts.init(this._root)
 
             const option = {
@@ -151,5 +151,5 @@ let getScriptPromisify = (src) => {
         }
     }
 
-    customElements.define('com-sap-sac-sample-demo_data_binding_custom_widget', SampleLifeExpectancy2)
+    customElements.define('com-sap-sample-demo-data-binding-custom-widget', DemoCustomWidget)
 })()
