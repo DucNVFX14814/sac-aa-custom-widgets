@@ -111,7 +111,7 @@ let getScriptPromisify = (src) => {
                     {
                         name: 'Area Mode',
                         type: 'pie',
-                        radius: [20, 140],
+                        radius: ['40%', '70%'],
                         center: ['50%', '60%'],
                         roseType: 'area',
                         itemStyle: {
