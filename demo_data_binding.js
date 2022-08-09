@@ -68,7 +68,7 @@ let getScriptPromisify = (src) => {
 
             const option = {
                 title: {
-                    top: '3%',
+                    top: '2%',
                     text: 'Demo Custom Widget',
                     left: 'center'
                 },
@@ -77,7 +77,7 @@ let getScriptPromisify = (src) => {
                     formatter: '{a} <br/>{b} : {c} ({d}%)'
                 },
                 legend: {
-                    top: '8%',
+                    top: '10%',
                     left: 'center'
                 },
                 toolbox: {
@@ -93,7 +93,7 @@ let getScriptPromisify = (src) => {
                         name: 'Radius Mode',
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['16.67%', '50%'],
+                        center: ['16.67%', '60%'],
                         roseType: 'radius',
                         itemStyle: {
                             borderRadius: 5
@@ -112,7 +112,7 @@ let getScriptPromisify = (src) => {
                         name: 'Area Mode',
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['50%', '50%'],
+                        center: ['50%', '60%'],
                         roseType: 'area',
                         itemStyle: {
                             borderRadius: 5
@@ -123,7 +123,7 @@ let getScriptPromisify = (src) => {
                         name: 'Access From',
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['66.67%', '50%'],
+                        center: ['83.33%', '60%'],
                         avoidLabelOverlap: false,
                         itemStyle: {
                             borderRadius: 10,
