@@ -94,7 +94,7 @@ let getScriptPromisify = (src) => {
                     }
                 },
                 series: [{
-                        name: lableMeasures + " : " + descriptionDimension,
+                        name: descriptionDimension + " : " + lableMeasures,
                         type: 'pie',
                         radius: [20, 140],
                         center: ['16.67%', '57%'],
@@ -113,7 +113,7 @@ let getScriptPromisify = (src) => {
                         data: myData
                     },
                     {
-                        name: lableMeasures + " : " + descriptionDimension,
+                        name: descriptionDimension + " : " + lableMeasures,
                         type: 'pie',
                         radius: [20, 140],
                         center: ['50%', '57%'],
@@ -124,7 +124,7 @@ let getScriptPromisify = (src) => {
                         data: myData
                     },
                     {
-                        name: lableMeasures + " : " + descriptionDimension,
+                        name: descriptionDimension + " : " + lableMeasures,
                         type: 'pie',
                         radius: ['40%', '70%'],
                         center: ['83.33%', '57%'],
