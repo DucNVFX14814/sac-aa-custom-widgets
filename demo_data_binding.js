@@ -53,6 +53,7 @@ let getScriptPromisify = (src) => {
             const data = resultSet.data
             console.log(data)
             const lableMeasures = resultSet.metadata.mainStructureMembers.measures_0.lable
+            console.log(lableMeasures)
             const dataBinding = this.dataBindings.getDataBinding('myDataBinding')
             console.log(dataBinding)
                 // const dimentions = []
