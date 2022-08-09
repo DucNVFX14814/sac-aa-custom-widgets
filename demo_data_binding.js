@@ -19,7 +19,7 @@ let getScriptPromisify = (src) => {
         }
         </style>
         <div id="root" style="width: 100%; height: 100%;">
-          <div id="placeholder">Hello World</div>
+          <div id="placeholder">Demo DataBinding Custom Widget</div>
         </div>
       `
     class DemoCustomWidget extends HTMLElement {
@@ -71,7 +71,7 @@ let getScriptPromisify = (src) => {
             const option = {
                 title: {
                     top: '2%',
-                    text: 'Demo Custom Widget',
+                    text: 'Demo DataBinding Custom Widget',
                     left: 'center'
                 },
                 tooltip: {
