@@ -60,7 +60,7 @@ let getScriptPromisify = (src) => {
             for (let xdata of data) {
                 // dimentions.push(xdata.dimensions_0.id)
                 // measures.push(xdata.measures_0.raw)
-                myData.push({ value: xdata.measures_0.raw, name: xdata.dimensions_0.id })
+                myData.push({ "value": xdata.measures_0.raw, "name": xdata.dimensions_0.id })
             }
             // console.log(dimentions)
             // console.log(measures)
@@ -68,6 +68,7 @@ let getScriptPromisify = (src) => {
 
             const option = {
                 title: {
+                    top: '5%',
                     text: 'Demo Custom Widget',
                     left: 'center'
                 },
@@ -76,7 +77,7 @@ let getScriptPromisify = (src) => {
                     formatter: '{a} <br/>{b} : {c} ({d}%)'
                 },
                 legend: {
-                    top: '7%',
+                    top: '8%',
                     left: 'center'
                 },
                 toolbox: {
@@ -92,7 +93,7 @@ let getScriptPromisify = (src) => {
                         name: 'Radius Mode',
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['25%', '50%'],
+                        center: ['5%', '35%'],
                         roseType: 'radius',
                         itemStyle: {
                             borderRadius: 5
@@ -111,7 +112,7 @@ let getScriptPromisify = (src) => {
                         name: 'Area Mode',
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['75%', '50%'],
+                        center: ['35%', '65%'],
                         roseType: 'area',
                         itemStyle: {
                             borderRadius: 5
@@ -122,6 +123,7 @@ let getScriptPromisify = (src) => {
                         name: 'Access From',
                         type: 'pie',
                         radius: ['40%', '70%'],
+                        center: ['65%', '95%'],
                         avoidLabelOverlap: false,
                         itemStyle: {
                             borderRadius: 10,
