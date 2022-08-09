@@ -52,6 +52,7 @@ let getScriptPromisify = (src) => {
             console.log(resultSet)
             const data = resultSet.data
             console.log(data)
+            const lableMeasures = resultSet.metadata.mainStructureMembers.measures_0.lable
             const dataBinding = this.dataBindings.getDataBinding('myDataBinding')
             console.log(dataBinding)
                 // const dimentions = []
@@ -90,7 +91,7 @@ let getScriptPromisify = (src) => {
                     }
                 },
                 series: [{
-                        name: 'Radius Mode',
+                        name: lableMeasures,
                         type: 'pie',
                         radius: [20, 140],
                         center: ['16.67%', '55%'],
@@ -109,7 +110,7 @@ let getScriptPromisify = (src) => {
                         data: myData
                     },
                     {
-                        name: 'Area Mode',
+                        name: lableMeasures,
                         type: 'pie',
                         radius: [20, 140],
                         center: ['50%', '55%'],
@@ -120,7 +121,7 @@ let getScriptPromisify = (src) => {
                         data: myData
                     },
                     {
-                        name: 'Access From',
+                        name: lableMeasures,
                         type: 'pie',
                         radius: ['40%', '70%'],
                         center: ['83.33%', '55%'],
