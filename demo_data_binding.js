@@ -95,7 +95,7 @@ let getScriptPromisify = (src) => {
                         name: lableMeasures,
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['16.67%', '55%'],
+                        center: ['16.67%', '57%'],
                         roseType: 'radius',
                         itemStyle: {
                             borderRadius: 5
@@ -114,7 +114,7 @@ let getScriptPromisify = (src) => {
                         name: lableMeasures,
                         type: 'pie',
                         radius: [20, 140],
-                        center: ['50%', '55%'],
+                        center: ['50%', '57%'],
                         roseType: 'area',
                         itemStyle: {
                             borderRadius: 5
@@ -125,7 +125,7 @@ let getScriptPromisify = (src) => {
                         name: lableMeasures,
                         type: 'pie',
                         radius: ['40%', '70%'],
-                        center: ['83.33%', '55%'],
+                        center: ['83.33%', '57%'],
                         avoidLabelOverlap: false,
                         itemStyle: {
                             borderRadius: 10,
