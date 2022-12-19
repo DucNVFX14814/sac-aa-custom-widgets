@@ -35,6 +35,8 @@ const getScriptPromisify = (src) => {
 
             const element = this._shadowRoot.getElementById("input_excel");
 
+            const data = [];
+
             // (A) NEW FILE READER
             const reader = new FileReader();
 
@@ -46,7 +48,6 @@ const getScriptPromisify = (src) => {
                     range = XLSX.utils.decode_range(worksheet["!ref"]);
 
                 // (B2) READ CELLS IN ARRAY
-                const data = [];
                 for (let row = range.s.r; row <= range.e.r; row++) {
                     let i = data.length;
                     data.push([]);
@@ -63,6 +64,8 @@ const getScriptPromisify = (src) => {
 
             // (C) START - READ SELECTED EXCEL FILE
             reader.readAsArrayBuffer(element.files[0]);
+
+            return data;
         }
     }
 
