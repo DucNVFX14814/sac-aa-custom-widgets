@@ -19,7 +19,7 @@ const getScriptPromisify = (src) => {
             this._shadowRoot.appendChild(template.content.cloneNode(true))
 
             this.addEventListener("input", () => {
-                this.dispatchEvent(new Event("onInput"));
+                this.dispatchEvent(new Event("onSelect"));
             });
 
 
@@ -35,42 +35,41 @@ const getScriptPromisify = (src) => {
         async reader() {
             await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js')
 
-            const element = this._shadowRoot.getElementById("input_excel");
+            const element = this._shadowRoot.getElementById("input_excel")
 
-            const data = [];
+            const data = []
 
             // (A) NEW FILE READER
-            const reader = new FileReader();
-
+            const reader = new FileReader()
 
             // (C) START - READ SELECTED EXCEL FILE
-            reader.readAsArrayBuffer(element.files[0]);
+            reader.readAsArrayBuffer(element.files[0])
 
             // (B) ON FINISH LOADING
             reader.addEventListener("loadend", (evt) => {
+                // (B1) GET THE FIRST WORKSHEET
                 const workbook = XLSX.read(evt.target.result, { type: "binary" }),
                     worksheet = workbook.Sheets[workbook.SheetNames[0]],
-                    range = XLSX.utils.decode_range(worksheet["!ref"]);
+                    range = XLSX.utils.decode_range(worksheet["!ref"])
 
                 // (B2) READ CELLS IN ARRAY
                 for (let row = range.s.r; row <= range.e.r; row++) {
-                    let i = data.length;
-                    data.push([]);
+                    let i = data.length
+                    data.push([])
                     for (let col = range.s.c; col <= range.e.c; col++) {
-                        let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })];
+                        let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })]
                         if (cell === undefined) {
-                            cell = "";
+                            cell = ""
                         }
-                        data[i].push(cell.v);
+                        data[i].push(cell.v)
                     }
                 }
-                // console.log(data);
-                this._data = data;
-            });
-        }
+                // console.log(data)
+            })
 
-        getData() {
-            return this._data;
+            await new Promise(resolve => setTimeout(resolve, 1000))
+
+            return data
         }
     }
     customElements.define('com-sap-sample-read-excel-file-into-array', ReadExcelFileIntoArray)
