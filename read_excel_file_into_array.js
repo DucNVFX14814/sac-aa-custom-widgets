@@ -26,6 +26,8 @@ const getScriptPromisify = (src) => {
             this._root = this._shadowRoot.getElementById('root')
 
             this._props = {}
+
+            this._data = []
         }
 
         onCustomWidgetResize(width, height) {}
@@ -40,9 +42,12 @@ const getScriptPromisify = (src) => {
             // (A) NEW FILE READER
             const reader = new FileReader();
 
+
+            // (C) START - READ SELECTED EXCEL FILE
+            reader.readAsArrayBuffer(element.files[0]);
+
             // (B) ON FINISH LOADING
             reader.addEventListener("loadend", (evt) => {
-                // (B1) GET THE FIRST WORKSHEET
                 const workbook = XLSX.read(evt.target.result, { type: "binary" }),
                     worksheet = workbook.Sheets[workbook.SheetNames[0]],
                     range = XLSX.utils.decode_range(worksheet["!ref"]);
@@ -59,15 +64,14 @@ const getScriptPromisify = (src) => {
                         data[i].push(cell.v);
                     }
                 }
-                console.log(data);
+                // console.log(data);
+                this._data = data;
             });
+        }
 
-            // (C) START - READ SELECTED EXCEL FILE
-            reader.readAsArrayBuffer(element.files[0]);
-
-            return data;
+        getData() {
+            return this._data;
         }
     }
-
     customElements.define('com-sap-sample-read-excel-file-into-array', ReadExcelFileIntoArray)
 })()
