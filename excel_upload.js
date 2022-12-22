@@ -102,7 +102,7 @@ const getScriptPromisify = (src) => {
                 let header = [],
                     keys = {};
                 for (let col = range.s.c; col <= range.e.c; col++) {
-                    let cell = worksheet[XLSX.utils.encode_cell({ r: 0, c: col })];
+                    let cell = worksheet[XLSX.utils.encode_cell({ r: range.s.r, c: col })];
                     if (cell === undefined) {
                         cell = "";
                     }
