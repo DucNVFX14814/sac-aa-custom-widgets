@@ -7,6 +7,33 @@ const getScriptPromisify = (src) => {
 (function() {
     const template = document.createElement('template')
     template.innerHTML = `
+        <style>
+            #input_excel {
+                width: auto;
+                max-width: 100%;
+                color: #444;
+                padding: 2px;
+                background: #fff;
+                border-radius: 4px;
+            }
+            
+            #input_excel::file-selector-button {
+                margin-right: 4px;
+                border: none;
+                background: #084cdf;
+                padding: 6px 8px;
+                border-radius: 4px;
+                color: #ffffff;
+                cursor: pointer;
+                transition: background .5s ease-in-out;
+            }
+            
+            #input_excel::file-selector-button:hover {
+                background: #c9cbd5;
+                color: #000000;
+            }
+        </style>
+
         <div id="root" style="width: 100%; height: 100%;">
             <input type="file" id="input_excel" class="input_excel" accept=".xls,.xlsx"/>
         </div>
