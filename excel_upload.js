@@ -71,7 +71,7 @@ const getScriptPromisify = (src) => {
 
             const file = this.getFile()
 
-            const data = []
+            let data = []
 
             // (A) NEW FILE READER
             const reader = new FileReader()
@@ -85,14 +85,27 @@ const getScriptPromisify = (src) => {
 
                 // (B2) READ CELLS IN ARRAY
                 for (let row = range.s.r; row <= range.e.r; row++) {
-                    let i = data.length
-                    data.push([])
+                    let dataRow = []
                     for (let col = range.s.c; col <= range.e.c; col++) {
                         let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })]
                         if (cell === undefined) {
-                            cell = ""
+                            dataRow.push(undefined)
+                        } else {
+                            dataRow.push(cell.w.trim())
                         }
-                        data[i].push(cell.v)
+                    }
+
+                    if (dataRow.length > 0) {
+                        let isDataRow = false
+                        for (let dataCell of dataRow) {
+                            if (typeof dataCell !== "undefined") {
+                                isDataRow = true
+                                break
+                            }
+                        }
+                        if (isDataRow) {
+                            data.push(dataRow)
+                        }
                     }
                 }
                 // console.log(data)
@@ -113,7 +126,7 @@ const getScriptPromisify = (src) => {
 
             const file = this.getFile()
 
-            const data = []
+            let data = []
 
             // (A) NEW FILE READER
             const reader = new FileReader()
@@ -127,13 +140,14 @@ const getScriptPromisify = (src) => {
 
                 // (B2) READ HEADER ROW
                 let header = [],
-                    keys = {};
+                    dataRow = {};
                 for (let col = range.s.c; col <= range.e.c; col++) {
                     let cell = worksheet[XLSX.utils.encode_cell({ r: range.s.r, c: col })];
                     if (cell === undefined) {
-                        cell = "";
+                        header[col] = undefined
+                    } else {
+                        header[col] = cell.w.trim()
                     }
-                    header.push(cell.v);
                 }
 
                 // (B3) READ DATA ROWS
@@ -141,13 +155,14 @@ const getScriptPromisify = (src) => {
                     for (let col = range.s.c; col <= range.e.c; col++) {
                         let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })];
                         if (cell === undefined) {
-                            cell = "";
+                            dataRow[header[col]] = undefined
+                        } else {
+                            dataRow[header[col]] = cell.w.trim()
                         }
-                        keys[header[col]] = cell.v;
                     }
-                    data.push(JSON.parse(JSON.stringify(keys)));
+                    data.push(JSON.parse(JSON.stringify(dataRow)))
                 }
-                // console.log(data);
+                // console.log(data)
             })
 
             // (C) START - READ SELECTED EXCEL FILE
@@ -157,7 +172,8 @@ const getScriptPromisify = (src) => {
 
             await new Promise(resolve => setTimeout(resolve, 1000))
 
-            return JSON.stringify(data)
+            // return JSON.stringify(data)
+            return data
         }
     }
     customElements.define('com-sap-excel-upload', ExcelUpload)

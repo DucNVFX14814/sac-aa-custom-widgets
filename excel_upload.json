@@ -1,0 +1,50 @@
+{
+    "eula": "",
+    "vendor": "SAP",
+    "license": "",
+    "id": "com.sap.sac.excel.upload",
+    "version": "1.0.0",
+    "name": "Excel Upload",
+    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACcklEQVR4nGNgGAWjYBSMgmEJDOsNpfRqDX11aw0bdGsNN+vWGj5jGIzAvt6eRb9GX1uvxiBOt8Zwol6t0W69WsM3erVG/9HxQLuVQb3Uilev2thGt9YoDeRY3RrDI3o1ht+xOXbAPaBboSsIdmyNUb5ujdEi3Rqjq3o1Rn+JdeyAe0CPAofiwj7rA8jC3uv9jwxpD/isDyA99kY9UDsaA/8HXRJCBjCH4QOjHtBDCr3Obd0ooVO+qgpF3q7d6f+XH1/g8j07+gZXDBjWm/6/9eI23PC7r+7+N6gzgcsvPb4cLnfn5Z3/Rg1mg68YTZmfjhJCuUsKwOIevT7/f/7+CRb79+/f/+R5aYO3Hth7bT/cA5ceXwaLbbmwFS62+cKWwZ2Jvfp8//+AhjYIlKws///3318w+9P3T/8dO10Gtwf0ao3+zzowB27Jx28f4ez2LZ1Doxg1b7b+//LjSxTLrj+78d+gHpGpB20e0Ks1+m/VaofhgWfvn/03a7IaGh5YfXot3OGvP7+Bs2funz34k1Di3BRwUQkC3399/5+3tBBuIago9Z0QOHg9YNJo8f/uq3twC+YcnAcWP3r7GFzs2J0Tg9cDMw/MRil9bNscwOKhUyPgRSkIlK6sGHx5IGhy6P9ff37hbOvsvLwLJV+AMvqg8YBBncn/8w8vwB0IKoFMmyxRHTch4P+fv3/gahYfWzr4kpAehXjUAwMdA4OmItMb9UDAaAwMqSTkvd7/MMOIG9zFNbyuW2tkDJsLGNTD6+RMcOjVGnWAZmMG7QQHCYBRq95QRbfOOFS31rBNr8Zom16N4XNSDBgFo2AUjAKGIQEAkqNB3aFhJ4wAAAAASUVORK5CYII=",
+    "newInstancePrefix": "ExcelUpload",
+    "description": "Excel Upload",
+    "webcomponents": [{
+        "kind": "main",
+        "tag": "com-sap-excel-upload",
+        "url": "http://127.0.0.1:5500/excel_upload.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+    }],
+    "properties": {
+        "width": {
+            "type": "integer",
+            "default": 320
+        },
+        "height": {
+            "type": "integer",
+            "default": 32
+        }
+    },
+    "methods": {
+        "readCellsData": {
+            "returnType": "string[][]",
+            "description": "Read excel file in to array",
+            "parameters": []
+        },
+        "readToJSON": {
+            "returnType": "string",
+            "description": "Read excel file in to JSONE",
+            "parameters": []
+        },
+        "getFilename": {
+            "returnType": "string",
+            "description": "Get the filename",
+            "parameters": []
+        }
+    },
+    "events": {
+        "onSelect": {
+            "description": "Called when the user selects the excel files."
+        }
+    }
+}
