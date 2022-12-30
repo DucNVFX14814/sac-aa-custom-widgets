@@ -11,7 +11,7 @@
     "webcomponents": [{
         "kind": "main",
         "tag": "com-sap-excel-upload",
-        "url": "http://127.0.0.1:5500/excel_upload.js",
+        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets/excel_upload.js",
         "integrity": "",
         "ignoreIntegrity": true
     }],
