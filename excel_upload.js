@@ -49,7 +49,6 @@ const getScriptPromisify = (src) => {
                 this.dispatchEvent(new Event("onSelect"));
             });
 
-
             this._root = this._shadowRoot.getElementById('root')
 
             this._props = {}
