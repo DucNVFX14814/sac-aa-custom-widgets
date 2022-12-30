@@ -159,7 +159,17 @@ const getScriptPromisify = (src) => {
                             dataRow[header[col]] = cell.w.trim()
                         }
                     }
-                    data.push(JSON.parse(JSON.stringify(dataRow)))
+
+                    let isDataRow = false
+                    for (let key in dataRow) {
+                        if (dataRow[key] !== undefined) {
+                            isDataRow = true
+                            break
+                        }
+                    }
+                    if (isDataRow) {
+                        data.push(JSON.parse(JSON.stringify(dataRow)))
+                    }
                 }
                 // console.log(data)
             })
@@ -171,7 +181,6 @@ const getScriptPromisify = (src) => {
 
             await new Promise(resolve => setTimeout(resolve, 1000))
 
-            // return JSON.stringify(data)
             return data
         }
     }
