@@ -69,8 +69,7 @@ const getScriptPromisify = (src) => {
             await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js')
 
             const file = this.getFile()
-
-            let data = []
+            const data = []
 
             // (A) NEW FILE READER
             const reader = new FileReader()
@@ -84,7 +83,7 @@ const getScriptPromisify = (src) => {
 
                 // (B2) READ CELLS IN ARRAY
                 for (let row = range.s.r; row <= range.e.r; row++) {
-                    let dataRow = []
+                    const dataRow = []
                     for (let col = range.s.c; col <= range.e.c; col++) {
                         let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })]
                         if (cell === undefined) {
@@ -124,8 +123,8 @@ const getScriptPromisify = (src) => {
             await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js')
 
             const file = this.getFile()
-
-            let data = []
+            const data = [],
+                header = []
 
             // (A) NEW FILE READER
             const reader = new FileReader()
@@ -138,24 +137,19 @@ const getScriptPromisify = (src) => {
                     range = XLSX.utils.decode_range(worksheet["!ref"]);
 
                 // (B2) READ HEADER ROW
-                let header = [],
-                    dataRow = {};
                 for (let col = range.s.c; col <= range.e.c; col++) {
                     let cell = worksheet[XLSX.utils.encode_cell({ r: range.s.r, c: col })];
-                    if (cell === undefined) {
-                        header[col] = undefined
-                    } else {
+                    if (cell !== undefined) {
                         header[col] = cell.w.trim()
                     }
                 }
 
                 // (B3) READ DATA ROWS
                 for (let row = range.s.r + 1; row <= range.e.r; row++) {
+                    const dataRow = {};
                     for (let col = range.s.c; col <= range.e.c; col++) {
                         let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })];
-                        if (cell === undefined) {
-                            dataRow[header[col]] = undefined
-                        } else {
+                        if (cell !== undefined) {
                             dataRow[header[col]] = cell.w.trim()
                         }
                     }
@@ -168,7 +162,7 @@ const getScriptPromisify = (src) => {
                         }
                     }
                     if (isDataRow) {
-                        data.push(JSON.parse(JSON.stringify(dataRow)))
+                        data.push(dataRow)
                     }
                 }
                 // console.log(data)
