@@ -1,9 +1,3 @@
-const getScriptPromisify = (src) => {
-    return new Promise(resolve => {
-        $.getScript(src, resolve)
-    })
-}
-
 (function() {
     const template = document.createElement('template')
     template.innerHTML = `
@@ -35,7 +29,7 @@ const getScriptPromisify = (src) => {
         </style>
 
         <div id="root" style="width: 100%; height: 100%;">
-            <input type="file" id="input_excel" class="input_excel" accept=".xls,.xlsx"/>
+            <input type="file" id="input_excel" accept=".xls,.xlsx"/>
         </div>
       `
     class ExcelUpload extends HTMLElement {
@@ -123,49 +117,14 @@ const getScriptPromisify = (src) => {
             await getScriptPromisify('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js')
 
             const file = this.getFile()
-            const data = [],
-                header = []
+            let data = []
 
             // (A) NEW FILE READER
             const reader = new FileReader()
 
             // (B) ON FINISH LOADING
-            reader.addEventListener("loadend", (evt) => {
-                // (B1) GET THE FIRST WORKSHEET
-                const workbook = XLSX.read(evt.target.result, { type: "binary" }),
-                    worksheet = workbook.Sheets[workbook.SheetNames[0]],
-                    range = XLSX.utils.decode_range(worksheet["!ref"]);
-
-                // (B2) READ HEADER ROW
-                for (let col = range.s.c; col <= range.e.c; col++) {
-                    let cell = worksheet[XLSX.utils.encode_cell({ r: range.s.r, c: col })];
-                    if (cell !== undefined) {
-                        header[col] = cell.w.trim()
-                    }
-                }
-
-                // (B3) READ DATA ROWS
-                for (let row = range.s.r + 1; row <= range.e.r; row++) {
-                    const dataRow = {};
-                    for (let col = range.s.c; col <= range.e.c; col++) {
-                        let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })];
-                        if (cell !== undefined) {
-                            dataRow[header[col]] = cell.w.trim()
-                        }
-                    }
-
-                    let isDataRow = false
-                    for (let key in dataRow) {
-                        if (dataRow[key] !== undefined) {
-                            isDataRow = true
-                            break
-                        }
-                    }
-                    if (isDataRow) {
-                        data.push(dataRow)
-                    }
-                }
-                // console.log(data)
+            reader.addEventListener("loadend", (e) => {
+                data = cofigureData(e)
             })
 
             // (C) START - READ SELECTED EXCEL FILE
@@ -180,3 +139,49 @@ const getScriptPromisify = (src) => {
     }
     customElements.define('com-sap-excel-upload', ExcelUpload)
 })()
+
+const getScriptPromisify = (src) => {
+    return new Promise(resolve => {
+        $.getScript(src, resolve)
+    })
+}
+const cofigureData = (e) => {
+    const data = []
+        // (B1) GET THE FIRST WORKSHEET
+    const workbook = XLSX.read(e.target.result, { type: "binary" }),
+        worksheet = workbook.Sheets[workbook.SheetNames[0]],
+        range = XLSX.utils.decode_range(worksheet["!ref"]);
+
+    // (B2) READ HEADER ROW
+    const header = []
+    for (let col = range.s.c; col <= range.e.c; col++) {
+        let cell = worksheet[XLSX.utils.encode_cell({ r: range.s.r, c: col })];
+        if (cell !== undefined) {
+            header[col] = cell.w.trim()
+        }
+    }
+
+    // (B3) READ DATA ROWS
+    for (let row = range.s.r + 1; row <= range.e.r; row++) {
+        const dataRow = {};
+        for (let col = range.s.c; col <= range.e.c; col++) {
+            let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })];
+            if (cell !== undefined) {
+                dataRow[header[col]] = cell.w.trim()
+            }
+        }
+
+        let isDataRow = false
+        for (let key in dataRow) {
+            if (dataRow[key] !== undefined) {
+                isDataRow = true
+                break
+            }
+        }
+        if (isDataRow) {
+            data.push(dataRow)
+        }
+    }
+    // console.log(data)
+    return data
+}
