@@ -147,7 +147,7 @@ const getScriptPromisify = (src) => {
 }
 const cofigureData = (e) => {
     const data = []
-        // (B1) GET THE FIRST WORKSHEET
+    // (B1) GET THE FIRST WORKSHEET
     const workbook = XLSX.read(e.target.result, { type: "binary" }),
         worksheet = workbook.Sheets[workbook.SheetNames[0]],
         range = XLSX.utils.decode_range(worksheet["!ref"]);
