@@ -182,6 +182,6 @@ const cofigureData = (e) => {
             data.push(dataRow)
         }
     }
-    console.log(data)
+    // console.log(data)
     return data
 }
