@@ -147,7 +147,7 @@ const getScriptPromisify = (src) => {
 }
 const cofigureData = (e) => {
     const data = []
-    // (B1) GET THE FIRST WORKSHEET
+        // (B1) GET THE FIRST WORKSHEET
     const workbook = XLSX.read(e.target.result, { type: "binary" }),
         worksheet = workbook.Sheets[workbook.SheetNames[0]],
         range = XLSX.utils.decode_range(worksheet["!ref"]);
@@ -167,7 +167,16 @@ const cofigureData = (e) => {
         for (let col = range.s.c; col <= range.e.c; col++) {
             let cell = worksheet[XLSX.utils.encode_cell({ r: row, c: col })];
             if (cell !== undefined) {
-                dataRow[header[col]] = cell.w.trim()
+                if (cell.t == "n" && cell.v.toString() !== cell.w.trim()) {
+                    const date = new Date(cell.w.trim())
+                    let month = (date.getMonth() + 1).toString()
+                    if (month.length === 1) {
+                        month = "0" + month
+                    }
+                    dataRow[header[col]] = date.getFullYear().toString() + month
+                } else {
+                    dataRow[header[col]] = cell.w.trim()
+                }
             }
         }
 
