@@ -83,7 +83,16 @@
                         if (cell === undefined) {
                             dataRow.push(undefined)
                         } else {
-                            dataRow.push(cell.w.trim())
+                            if (cell.t == "n" && cell.v.toString() !== cell.w.trim()) {
+                                const date = new Date(cell.w.trim())
+                                let month = (date.getMonth() + 1).toString()
+                                if (month.length === 1) {
+                                    month = "0" + month
+                                }
+                                dataRow.push(date.getFullYear().toString() + month)
+                            } else {
+                                dataRow.push(cell.w.trim())
+                            }
                         }
                     }
 
