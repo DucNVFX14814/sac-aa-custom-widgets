@@ -1,0 +1,57 @@
+{
+    "eula": "",
+    "vendor": "SAP",
+    "license": "",
+    "id": "com.sap.sac.sample.bar.race.chart",
+    "version": "1.0.0",
+    "name": "Bar Race Chart",
+    "newInstancePrefix": "BarRaceChart",
+    "description": "Bar Race Chart",
+    "webcomponents": [{
+        "kind": "main",
+        "tag": "com-sap-sample-bar-race-chart",
+        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets/amCharts_bar_race.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+    }],
+    "dataBindings": {
+        "myDataBinding": {
+            "feeds": [{
+                    "id": "dimensions",
+                    "description": "Dimensions",
+                    "type": "dimension"
+                },
+                {
+                    "id": "measures",
+                    "description": "Measures",
+                    "type": "mainStructureMember"
+                }
+            ]
+        }
+    },
+    "properties": {
+        "width": {
+            "type": "integer",
+            "default": 1200
+        },
+        "height": {
+            "type": "integer",
+            "default": 600
+        }
+    },
+    "methods": {
+        "render": {
+            "description": "Render chart",
+            "parameters": [{
+                "name": "PropertyOptions",
+                "type": "PlanningModelMemberOptions",
+                "description": "Property of Table"
+            }]
+        }
+    },
+    "events": {
+        "onClick": {
+            "description": "Called when the user clicks the Widget."
+        }
+    }
+}
