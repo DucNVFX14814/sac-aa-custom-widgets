@@ -10,7 +10,7 @@
     "webcomponents": [{
         "kind": "main",
         "tag": "com-sap-sample-bar-race-chart",
-        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets/amCharts_bar_race.js",
+        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets/bar_race_chart.js",
         "integrity": "",
         "ignoreIntegrity": true
     }],
