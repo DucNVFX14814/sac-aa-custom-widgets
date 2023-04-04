@@ -1,0 +1,37 @@
+{
+    "eula": "",
+    "vendor": "SAP",
+    "license": "",
+    "id": "com.sap.sac.sample.amCharts.bar.race",
+    "version": "1.0.0",
+    "name": "amCharts Bar Race",
+    "newInstancePrefix": "AmChartsBarRace",
+    "description": "amCharts Bar Race",
+    "webcomponents": [{
+        "kind": "main",
+        "tag": "com-sap-sample-amcharts-bar-race",
+        "url": "http://127.0.0.1:5500/amCharts_bar_race.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+    }],
+    "properties": {
+        "width": {
+            "type": "integer",
+            "default": 1200
+        },
+        "height": {
+            "type": "integer",
+            "default": 500
+        }
+    },
+    "methods": {
+        "render": {
+            "description": "Render chart"
+        }
+    },
+    "events": {
+        "onClick": {
+            "description": "Called when the user clicks the Widget."
+        }
+    }
+}
