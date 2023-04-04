@@ -10,7 +10,7 @@
     "webcomponents": [{
         "kind": "main",
         "tag": "com-sap-sample-amcharts-bar-race",
-        "url": "http://127.0.0.1:5500/amCharts_bar_race.js",
+        "url": "https://ducnvfx14814.github.io/sac-aa-custom-widgets/amCharts_bar_race.js",
         "integrity": "",
         "ignoreIntegrity": true
     }],
