@@ -32,11 +32,11 @@
     "properties": {
         "width": {
             "type": "integer",
-            "default": 1200
+            "default": 800
         },
         "height": {
             "type": "integer",
-            "default": 600
+            "default": 496
         }
     },
     "methods": {
@@ -44,8 +44,8 @@
             "description": "Render chart",
             "parameters": [{
                 "name": "PropertyOptions",
-                "type": "PlanningModelMemberOptions",
-                "description": "Property of Table"
+                "type": "Selection",
+                "description": "Property Options"
             }]
         }
     },

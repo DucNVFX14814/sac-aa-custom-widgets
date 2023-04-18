@@ -46,6 +46,7 @@ let getScriptPromisify = (src) => {
       await getScriptPromisify("https://cdn.amcharts.com/lib/5/index.js");
       await getScriptPromisify("https://cdn.amcharts.com/lib/5/xy.js");
       await getScriptPromisify("https://cdn.amcharts.com/lib/5/themes/Animated.js");
+      await getScriptPromisify("https://cdn.amcharts.com/lib/5/plugins/exporting.js");
 
       /**
        * ---------------------------------------
@@ -73,7 +74,7 @@ let getScriptPromisify = (src) => {
       // set stepDuration
       const stepDuration = 2000;
       // Data
-      let allData = {}
+      const allData = {}
       const dataBinding = this.dataBindings.getDataBinding('myDataBinding')
       console.log(dataBinding)
       const myDataBinding = this.myDataBinding
@@ -523,9 +524,62 @@ let getScriptPromisify = (src) => {
 
       console.log(allData)
 
+      const dataExport = []
+
+      for (const d in allData) {
+        dataExport.push({Date: d, ...allData[d]})
+      }
+
+      console.log(dataExport)
+
       // Create root element
       // https://www.amcharts.com/docs/v5/getting-started/#Root_element
       var root = am5.Root.new(this._root);
+
+      // set exporting
+      const exporting = am5plugins_exporting.Exporting.new(root, {
+        menu: am5plugins_exporting.ExportingMenu.new(root, {}),
+        filePrefix: "myChart",
+        dataSource: dataExport,
+        // numericFields: ["value", "value2"],
+        // numberFormat: "#,###.00",
+        // dateFields: ["date"],
+        // dateFormat: "yyyy-MM-dd",
+        // dataFields: {
+        //   value: "Value (USD)",
+        //   value2: "Value (EUR)",
+        //   date: "Date"
+        // },
+        // dataFieldsOrder: ["value", "value", "date"],
+        pngOptions: { 
+          quality: 1.0,
+          maintainPixelRatio: true
+        },
+        jpgOptions: {
+          quality: 1.0,
+          maintainPixelRatio: true
+        }
+
+      });
+
+      exporting.get("menu").set("items", [{
+        type: "format",
+        format: "png",
+        label: "Export Image"
+      }, {
+        type: "format",
+        format: "xlsx",
+        label: "Export Excel"
+      }, {
+        type: "separator"
+      }, {
+        type: "format",
+        format: "print",
+        label: "Print"
+      }]);
+
+      // set FPS
+      root.fps = 60
 
       // remove logo
       root._logo.dispose();
