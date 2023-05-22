@@ -28,9 +28,7 @@ let getScriptPromisify = (src) => {
 
     onCustomWidgetResize() {
     }
-    // ------------------
-    // Scripting methods
-    // ------------------
+
     getScript(url) {
       return getScriptPromisify(url).value
     }
