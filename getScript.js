@@ -32,7 +32,7 @@ let getScriptPromisify = (src) => {
     // Scripting methods
     // ------------------
     getScript(url) {
-      return getScriptPromisify(url)
+      return getScriptPromisify(url).value
     }
   }
 
