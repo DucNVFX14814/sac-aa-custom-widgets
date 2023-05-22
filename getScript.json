@@ -1,0 +1,43 @@
+{
+    "eula": "",
+    "vendor": "SAP",
+    "license": "",
+    "id": "com.sap.sac.sample.getScript",
+    "version": "1.0.0",
+    "name": "Get Script",
+    "newInstancePrefix": "GetScript",
+    "description": "Get Script by Url",
+    "webcomponents": [{
+        "kind": "main",
+        "tag": "com-sap-sample-getscript",
+        "url": "http://127.0.0.1:5500/getScript.js",
+        "integrity": "",
+        "ignoreIntegrity": true
+    }],
+    "properties": {
+        "width": {
+            "type": "integer",
+            "default": 0
+        },
+        "height": {
+            "type": "integer",
+            "default": 0
+        }
+    },
+    "methods": {
+        "getScript": {
+            "parameters": [{
+                "name": "url",
+                "type": "string",
+                "description": "url Path"
+            }],
+            "description": "Get Script by Url",
+            "returnType": "Selection[]"
+        }
+    },
+    "events": {
+        "onClick": {
+            "description": "Called when the user clicks the Widget."
+        }
+    }
+}
