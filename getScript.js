@@ -31,8 +31,8 @@ let getScriptPromisify = (src) => {
     // ------------------
     // Scripting methods
     // ------------------
-    async getScript(url) {
-      await getScriptPromisify(url);
+    getScript(url) {
+      return getScriptPromisify(url)
     }
   }
 
